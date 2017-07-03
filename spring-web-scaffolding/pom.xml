@@ -31,9 +31,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- self -->
+        <spring.web.scaffolding.service.api.version>1.0.0</spring.web.scaffolding.service.api.version>
         <spring.web.scaffolding.service.impl.version>1.0.0</spring.web.scaffolding.service.impl.version>
         <spring.web.scaffolding.test.version>1.0.0</spring.web.scaffolding.test.version>
         <spring.web.scaffolding.dao.version>1.0.0</spring.web.scaffolding.dao.version>
+        <spring.web.scaffolding.common.version>1.0.0</spring.web.scaffolding.common.version>
 
         <spring.version>4.3.4.RELEASE</spring.version>
         <mybatis.version>3.2.6</mybatis.version>
@@ -80,6 +82,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -121,6 +124,11 @@
             <!-- =================== Module ======================== -->
             <dependency>
                 <groupId>spring-scaffolding</groupId>
+                <artifactId>spring-web-scaffolding-service-api</artifactId>
+                <version>${spring.web.scaffolding.service.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>spring-scaffolding</groupId>
                 <artifactId>spring-web-scaffolding-service-impl</artifactId>
                 <version>${spring.web.scaffolding.service.impl.version}</version>
             </dependency>
@@ -128,6 +136,11 @@
                 <groupId>spring-scaffolding</groupId>
                 <artifactId>spring-web-scaffolding-dao</artifactId>
                 <version>${spring.web.scaffolding.dao.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>spring-scaffolding</groupId>
+                <artifactId>spring-web-scaffolding-common</artifactId>
+                <version>${spring.web.scaffolding.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>spring-scaffolding</groupId>
@@ -242,9 +255,12 @@
 
     <!-- module configuration here -->
     <modules>
-        <module>spring-web-scaffolding-service-impl</module>
         <module>spring-web-scaffolding-test</module>
+        <module>spring-web-scaffolding-common</module>
+        <module>spring-web-scaffolding-service-api</module>
+        <module>spring-web-scaffolding-service-impl</module>
         <module>spring-web-scaffolding-dao</module>
+        <module>spring-web-scaffolding-web</module>
     </modules>
 
 

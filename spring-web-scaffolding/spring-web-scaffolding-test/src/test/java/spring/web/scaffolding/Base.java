@@ -19,8 +19,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  ***********************************************************/
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-        "classpath:/spring/applicationContext-service-impl.xml",
-        "classpath:/spring/applicationContext-dao.xml",
+        "classpath:/spring/application-context-service-impl.xml",
+        "classpath:/spring/application-context-dao.xml",
 })
 public class Base {
 
