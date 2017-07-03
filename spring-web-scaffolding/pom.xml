@@ -14,12 +14,10 @@
     -->
 
     <!-- main module GAV here -->
-    <!--
-    <groupId></groupId>
-    <artifactId></artifactId>
-    <version></version>
+    <groupId>spring-scaffolding</groupId>
+    <artifactId>spring-web-scaffolding</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
-    -->
 
     <name>spring-web-scaffolding</name>
 
