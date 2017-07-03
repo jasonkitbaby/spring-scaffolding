@@ -10,3 +10,9 @@
 | Spring-web-scaffolding-integration | 第三方集成 |
 | Spring-web-scaffolding-common | 工具层 |
 | Spring-web-scaffolding-dao | Dao 层 |
+| Spring-web-scaffolding-test | 单元测试 层 |
+
+
+# Context 配置方式 #
+xml
+Java

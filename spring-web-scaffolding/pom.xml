@@ -31,30 +31,24 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- self -->
-        <ctrip.paymentlbservice.dal.version>1.0.0</ctrip.paymentlbservice.dal.version>
-        <ctrip.paymentlbservice.facade.version>1.0.0</ctrip.paymentlbservice.facade.version>
-        <ctrip.paymentlbservice.integration.version>1.0.0</ctrip.paymentlbservice.integration.version>
-        <ctrip.paymentlbservice.util.version>1.0.0</ctrip.paymentlbservice.util.version>
-        <ctrip.paymentlbservice.service.version>1.0.0</ctrip.paymentlbservice.service.version>
-        <ctrip.paymentlbservice.biz.version>1.0.0</ctrip.paymentlbservice.biz.version>
-        <ctrip.paymentlbservice.test.version>1.0.0</ctrip.paymentlbservice.test.version>
-        <ctrip.paymentlbservice.web.version>1.0.0</ctrip.paymentlbservice.web.version>
-        <ctrip.paymentlbservice.job.version>1.0.0</ctrip.paymentlbservice.job.version>
-        <ctrip.paymentlbservice.repository.version>1.0.0</ctrip.paymentlbservice.repository.version>
-        <ctrip.paymentlbservice.drimpl.version>1.0.0</ctrip.paymentlbservice.drimpl.version>
+        <spring.web.scaffolding.service.impl.version>1.0.0</spring.web.scaffolding.service.impl.version>
+        <spring.web.scaffolding.test.version>1.0.0</spring.web.scaffolding.test.version>
+        <spring.web.scaffolding.dao.version>1.0.0</spring.web.scaffolding.dao.version>
 
         <spring.version>4.3.4.RELEASE</spring.version>
+        <mybatis.version>3.2.6</mybatis.version>
         <guava.version>19.0</guava.version>
         <lombok.version>1.16.16.0</lombok.version>
         <junit.version>4.12</junit.version>
         <log4j.version>1.1.4</log4j.version>
+        <commons.logging.version>1.2</commons.logging.version>
 
         <packaging.all>war</packaging.all>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
+            <!-- ==================== spring  ==================== -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
@@ -73,6 +67,27 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
 
             <!-- ==================== 3rd party  ==================== -->
             <!-- Junit -->
@@ -82,19 +97,45 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons.logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!-- mybatis/spring包 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>1.2.2</version>
+            </dependency>
+
+            <!-- =================== Module ======================== -->
+            <dependency>
+                <groupId>spring-scaffolding</groupId>
+                <artifactId>spring-web-scaffolding-service-impl</artifactId>
+                <version>${spring.web.scaffolding.service.impl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>spring-scaffolding</groupId>
+                <artifactId>spring-web-scaffolding-dao</artifactId>
+                <version>${spring.web.scaffolding.dao.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>spring-scaffolding</groupId>
+                <artifactId>spring-web-scaffolding-test</artifactId>
+                <version>${spring.web.scaffolding.test.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -134,18 +175,18 @@
                 </dependencies>
             </plugin>
 
-            <plugin>
-                <artifactId>exec-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-                <version>1.2.1</version>
-                <configuration>
-                    <executable>C:/DevTools/ConfigGen/ConfigGen.exe</executable>
-                    <arguments>
-                        <argument>-g</argument>
-                        <argument>${project.basedir}</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>exec-maven-plugin</artifactId>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<version>1.2.1</version>-->
+                <!--<configuration>-->
+                    <!--<executable>C:/DevTools/ConfigGen/ConfigGen.exe</executable>-->
+                    <!--<arguments>-->
+                        <!--<argument>-g</argument>-->
+                        <!--<argument>${project.basedir}</argument>-->
+                    <!--</arguments>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
@@ -197,17 +238,9 @@
 
     <!-- module configuration here -->
     <modules>
-        <module>ctrip-payment-lb-service-util</module>
-        <module>ctrip-payment-lb-service-dal</module>
-        <module>ctrip-payment-lb-service-facade</module>
-        <module>ctrip-payment-lb-service-integration</module>
-        <module>ctrip-payment-lb-service-service</module>
-        <module>ctrip-payment-lb-service-biz</module>
-        <module>ctrip-payment-lb-service-test</module>
-        <module>ctrip-payment-lb-service-web</module>
-        <module>ctrip-payment-lb-service-job</module>
-        <module>ctrip-payment-lb-service-drimpl</module>
-        <module>ctrip-payment-lb-service-repository</module>
+        <module>spring-web-scaffolding-service-impl</module>
+        <module>spring-web-scaffolding-test</module>
+        <module>spring-web-scaffolding-dao</module>
     </modules>
 
 

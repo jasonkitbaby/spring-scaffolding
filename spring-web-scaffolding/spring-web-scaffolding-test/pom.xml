@@ -13,13 +13,16 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-web-scaffolding-service-impl</artifactId>
+    <artifactId>spring-web-scaffolding-test</artifactId>
     <packaging>jar</packaging>
 
-    <name>spring-web-scaffolding-service-impl</name>
+    <name>spring-web-scaffolding-test</name>
 
     <dependencies>
-
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -32,6 +35,24 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
 
+
+        <!-- modules -->
+        <dependency>
+            <groupId>spring-scaffolding</groupId>
+            <artifactId>spring-web-scaffolding-service-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>spring-scaffolding</groupId>
+            <artifactId>spring-web-scaffolding-dao</artifactId>
+        </dependency>
     </dependencies>
 </project>
