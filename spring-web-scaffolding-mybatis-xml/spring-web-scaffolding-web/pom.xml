@@ -19,18 +19,7 @@
     <name>spring-web-scaffolding-web</name>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -40,8 +29,46 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+
+        <dependency><!-- slf4j api-->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <!--用于lo4j2 与slf4j保持桥接-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+        </dependency>
+
+        <!--核心log4j2jar包-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
 
         <!-- modules -->
+        <dependency>
+            <groupId>spring-scaffolding</groupId>
+            <artifactId>spring-web-scaffolding-service-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>spring-scaffolding</groupId>
             <artifactId>spring-web-scaffolding-service-impl</artifactId>
@@ -50,6 +77,9 @@
             <groupId>spring-scaffolding</groupId>
             <artifactId>spring-web-scaffolding-dao</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>spring-scaffolding</groupId>
+            <artifactId>spring-web-scaffolding-common</artifactId>
+        </dependency>
     </dependencies>
 </project>
