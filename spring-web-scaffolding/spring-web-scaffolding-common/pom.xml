@@ -13,10 +13,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-web-scaffolding-service-common</artifactId>
+    <artifactId>spring-web-scaffolding-common</artifactId>
     <packaging>jar</packaging>
 
-    <name>spring-web-scaffolding-service-common</name>
+    <name>spring-web-scaffolding-common</name>
 
     <dependencies>
 
