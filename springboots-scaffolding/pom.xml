@@ -31,16 +31,20 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- self -->
+        <spring.boot.scaffolding.test.version>1.0.0</spring.boot.scaffolding.test.version>
+        <spring.boot.scaffolding.web.version>1.0.0</spring.boot.scaffolding.web.version>
         <spring.boot.scaffolding.service.api.version>1.0.0</spring.boot.scaffolding.service.api.version>
         <spring.boot.scaffolding.service.impl.version>1.0.0</spring.boot.scaffolding.service.impl.version>
-        <spring.boot.scaffolding.test.version>1.0.0</spring.boot.scaffolding.test.version>
-        <spring.boot.scaffolding.dao.version>1.0.0</spring.boot.scaffolding.dao.version>
+        <spring.boot.scaffolding.repository.version>1.0.0</spring.boot.scaffolding.repository.version>
+        <spring.boot.scaffolding.dao.jdbc.version>1.0.0</spring.boot.scaffolding.dao.jdbc.version>
+        <spring.boot.scaffolding.dao.mybatis.version>1.0.0</spring.boot.scaffolding.dao.mybatis.version>
+
         <spring.boot.scaffolding.common.version>1.0.0</spring.boot.scaffolding.common.version>
 
         <spring.version>4.3.4.RELEASE</spring.version>
         <spring.boot.version>Fowler-SR2</spring.boot.version>
         <mybatis.version>3.2.6</mybatis.version>
-        <guava.version>19.0</guava.version>
+        <guava.version>23.0</guava.version>
         <lombok.version>1.16.16.0</lombok.version>
         <junit.version>4.12</junit.version>
         <log4j.version>1.1.4</log4j.version>
@@ -60,52 +64,31 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <!-- ==================== spring  ==================== -->
+            <!-- Import dependency management from Spring -->
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
+                <artifactId>spring-framework-bom</artifactId>
                 <version>${spring.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- commons-logging is banned -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
+            <!-- ==================== Logging  ==================== -->
+
+            <!-- ==================== Unit Test  ==================== -->
+
+            <!-- ==================== Mybatis  ==================== -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!-- mybatis/spring包 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>1.2.2</version>
+            </dependency>
 
             <!-- ==================== 3rd party  ==================== -->
             <!-- Junit -->
@@ -120,17 +103,7 @@
                 <artifactId>commons-logging</artifactId>
                 <version>${commons.logging.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            <!-- mybatis/spring包 -->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-spring</artifactId>
-                <version>1.2.2</version>
-            </dependency>
+
 
             <!-- =================== Module ======================== -->
             <dependency>
@@ -262,6 +235,7 @@
         <!--<module>spring-boot-scaffolding-common</module>-->
         <!--<module>spring-boot-scaffolding-service-api</module>-->
         <module>spring-boot-scaffolding-service-impl</module>
+        <module>spring-boot-scaffolding-repository</module>
         <!--<module>spring-boot-scaffolding-dao</module>-->
         <!--<module>spring-boot-scaffolding-web</module>-->
     </modules>
