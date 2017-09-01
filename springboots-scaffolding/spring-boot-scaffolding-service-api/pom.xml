@@ -13,11 +13,11 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-boot-scaffolding-repository</artifactId>
-    <version>1.0.0</version>
+    <artifactId>spring-boot-scaffolding-service-api</artifactId>
+    <version>${spring.boot.scaffolding.service.api.version}</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-scaffolding-repository</name>
+    <name>spring-boot-scaffolding-service-api</name>
 
     <dependencies>
 

@@ -8,12 +8,13 @@
     <!-- main pom here-->
     <parent>
         <groupId>spring-scaffolding</groupId>
-        <artifactId>spring-boot-scaffolding</artifactId>
+        <artifactId>spring-boots-scaffolding</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>spring-boot-scaffolding-service-impl</artifactId>
+    <version>${spring.boot.scaffolding.service.impl.version}</version>
     <packaging>jar</packaging>
 
     <name>spring-boot-scaffolding-service-impl</name>
