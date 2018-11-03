@@ -5,7 +5,7 @@
 
     <!-- main module GAV here -->
     <groupId>spring-scaffolding</groupId>
-    <artifactId>spring-boots-scaffolding</artifactId>
+    <artifactId>spring-boot-scaffolding</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
