@@ -3,16 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
-    <!-- parent module GAV here -->
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.BUILD-SNAPSHOT</version>
-    </parent>
-
-
     <!-- main module GAV here -->
     <groupId>spring-scaffolding</groupId>
     <artifactId>spring-boots-scaffolding</artifactId>
@@ -31,16 +21,20 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- self -->
+        <spring.boot.scaffolding.test.version>1.0.0</spring.boot.scaffolding.test.version>
+        <spring.boot.scaffolding.web.version>1.0.0</spring.boot.scaffolding.web.version>
+        <spring.boot.scaffolding.biz.version>1.0.0</spring.boot.scaffolding.biz.version>
         <spring.boot.scaffolding.service.api.version>1.0.0</spring.boot.scaffolding.service.api.version>
         <spring.boot.scaffolding.service.impl.version>1.0.0</spring.boot.scaffolding.service.impl.version>
-        <spring.boot.scaffolding.test.version>1.0.0</spring.boot.scaffolding.test.version>
-        <spring.boot.scaffolding.dao.version>1.0.0</spring.boot.scaffolding.dao.version>
+        <spring.boot.scaffolding.repository.version>1.0.0</spring.boot.scaffolding.repository.version>
+        <spring.boot.scaffolding.dao.jdbc.version>1.0.0</spring.boot.scaffolding.dao.jdbc.version>
+        <spring.boot.scaffolding.dao.mybatis.version>1.0.0</spring.boot.scaffolding.dao.mybatis.version>
         <spring.boot.scaffolding.common.version>1.0.0</spring.boot.scaffolding.common.version>
 
         <spring.version>4.3.4.RELEASE</spring.version>
-        <spring.boot.version>Fowler-SR2</spring.boot.version>
+        <spring.boot.version>1.5.6.RELEASE</spring.boot.version>
         <mybatis.version>3.2.6</mybatis.version>
-        <guava.version>19.0</guava.version>
+        <guava.version>23.0</guava.version>
         <lombok.version>1.16.16.0</lombok.version>
         <junit.version>4.12</junit.version>
         <log4j.version>1.1.4</log4j.version>
@@ -51,7 +45,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
@@ -60,52 +53,31 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <!-- ==================== spring  ==================== -->
+            <!-- Import dependency management from Spring -->
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
+                <artifactId>spring-framework-bom</artifactId>
                 <version>${spring.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- commons-logging is banned -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
+            <!-- ==================== Logging  ==================== -->
+
+            <!-- ==================== Unit Test  ==================== -->
+
+            <!-- ==================== Mybatis  ==================== -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!-- mybatis/spring包 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>1.2.2</version>
+            </dependency>
 
             <!-- ==================== 3rd party  ==================== -->
             <!-- Junit -->
@@ -120,19 +92,14 @@
                 <artifactId>commons-logging</artifactId>
                 <version>${commons.logging.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            <!-- mybatis/spring包 -->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-spring</artifactId>
-                <version>1.2.2</version>
-            </dependency>
+
 
             <!-- =================== Module ======================== -->
+            <dependency>
+                <groupId>spring-scaffolding</groupId>
+                <artifactId>spring-boot-scaffolding-biz</artifactId>
+                <version>${spring.boot.scaffolding.biz.version}</version>
+            </dependency>
             <dependency>
                 <groupId>spring-scaffolding</groupId>
                 <artifactId>spring-boot-scaffolding-service-api</artifactId>
@@ -145,18 +112,23 @@
             </dependency>
             <dependency>
                 <groupId>spring-scaffolding</groupId>
-                <artifactId>spring-boot-scaffolding-dao</artifactId>
-                <version>${spring.boot.scaffolding.dao.version}</version>
+                <artifactId>spring-boot-scaffolding-repository</artifactId>
+                <version>${spring.boot.scaffolding.repository.version}</version>
             </dependency>
             <dependency>
                 <groupId>spring-scaffolding</groupId>
-                <artifactId>spring-web-scaffolding-common</artifactId>
-                <version>${spring.web.scaffolding.common.version}</version>
+                <artifactId>spring-boot-scaffolding-dao-jdbc</artifactId>
+                <version>${spring.boot.scaffolding.dao.jdbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>spring-scaffolding</groupId>
                 <artifactId>spring-boot-scaffolding-test</artifactId>
                 <version>${spring.boot.scaffolding.test.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>spring-scaffolding</groupId>
+                <artifactId>spring-boot-scaffolding-web</artifactId>
+                <version>${spring.boot.scaffolding.web.version}</version>
             </dependency>
 
         </dependencies>
@@ -203,10 +175,10 @@
                 </dependencies>
             </plugin>
 
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
@@ -258,12 +230,15 @@
 
     <!-- module configuration here -->
     <modules>
-        <!--<module>spring-boot-scaffolding-test</module>-->
+
         <!--<module>spring-boot-scaffolding-common</module>-->
-        <!--<module>spring-boot-scaffolding-service-api</module>-->
+        <module>spring-boot-scaffolding-test</module>
         <module>spring-boot-scaffolding-service-impl</module>
-        <!--<module>spring-boot-scaffolding-dao</module>-->
-        <!--<module>spring-boot-scaffolding-web</module>-->
+        <module>spring-boot-scaffolding-service-api</module>
+        <module>spring-boot-scaffolding-repository</module>
+        <module>spring-boot-scaffolding-biz</module>
+        <module>spring-boot-scaffolding-dao-jdbc</module>
+        <module>spring-boot-scaffolding-web</module>
     </modules>
 
 
